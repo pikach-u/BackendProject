@@ -2,6 +2,10 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello");
+        int age = 25;
+        System.out.println(age);
+
+        age = 26;
+        System.out.println(age);
     }
 }
