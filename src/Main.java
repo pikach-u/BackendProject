@@ -7,5 +7,12 @@ public class Main {
 
         age = 26;
         System.out.println(age);
+
+        double salary = 50000.75;
+        System.out.println(salary);
+
+        String name = "zw";
+        System.out.println(name);
+
     }
 }
