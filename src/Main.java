@@ -2,18 +2,12 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        int age = 25;
-        System.out.println(age);
 
-        age = 26;
-        System.out.println(age);
-
-        double salary = 50000.75;
-        System.out.println(salary);
-
-        String name = "zw";
-        System.out.println(name);
-        System.out.println(name.length());
+        int bonus = 5000;
+        double salary = 55000.75;
+        //double totalSalary = salary + bonus;
+        int totalSalary = (int)salary + bonus; //casting
+        System.out.println("My Salary: " + totalSalary);
 
     }
 }
