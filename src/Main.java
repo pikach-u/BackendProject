@@ -13,6 +13,7 @@ public class Main {
 
         String name = "zw";
         System.out.println(name);
+        System.out.println(name.length());
 
     }
 }
