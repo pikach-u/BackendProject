@@ -1,4 +1,4 @@
-//0602 Operator
+//0602 Compound assignment operator
 
 public class Main_0602 {
     public static void main(String[] args) {
@@ -6,20 +6,21 @@ public class Main_0602 {
         int a = 10;
         int b = 3;
 
-        int sum = a+b;
-        System.out.println(sum);
+        a += 5; // a = a+5
 
-        int difference = a-b;
-        System.out.println(difference);
+        System.out.println(a);
 
-        int product = a*b;
-        System.out.println(product);
+        b -= 1;
+        System.out.println(b); // 2
 
-        int quotient = a/b;
-        System.out.println(quotient);
+        b *= 4;
+        System.out.println(b); // 8
 
-        int remainder = a%b;
-        System.out.println(remainder);
+        b /= 3;
+        System.out.println(b); // 2
+
+        b %= 2;
+        System.out.println(b); // 0
 
     }
 }
