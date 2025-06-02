@@ -1,31 +1,38 @@
-//0602 increment and decrement operator
+//0602 Conditional-Statement-If
 
 public class Main_0602 {
     public static void main(String[] args) {
-        int a = 10, b = 3;
+        // if-else
+        int num = -1;
 
-        ++a;
-        System.out.println(a);
+        if(num > 0) {
+            System.out.println("number는 0보다 큽니다");
+        }
+        else{
+            System.out.println("number는 0이거나 0보다 작습니다.");
+        }
 
-        --b;
-        System.out.println(b);
+        //if-else if-else
+        num = 5;
 
-        a++;
-        System.out.println(a);
+        if(num > 0) {
+            System.out.println("number는 0보다 큽니다");
+        } else if (num < 0) {
+            System.out.println("number는 0보다 작습니다");
+        } else{
+            System.out.println("number는 0보다 같습니다");
+        }
 
-        b--;
-        System.out.println(b);
 
-        System.out.println(++a);
+        //if-else if
+        num = -1;
+        if (num > 0) {
+            System.out.println("number는 양수입니다.");
+        }
+        else if (num < 0) {
+            System.out.println("number는 음수입니다.");
+        }
 
-        System.out.println(--b);
 
-        System.out.println(a++);
-
-        System.out.println(a);
-
-        System.out.println(b--);
-
-        System.out.println(b);
     }
 }
