@@ -1,47 +1,45 @@
-//0604 For-Loop
+//0604 While
+
+import java.sql.SQLOutput;
 
 public class Main_0604 {
     public static void main(String[] args) {
-        for (int i = 1; i <= 5; i++) {
+        int i = 0;
+        while (i < 5) {
             System.out.println(i);
+            i++;
         }
 
-        for (int i = 10; i > 0; i--) {
-            System.out.println(i);
-        }
+        boolean a = true;
+        int b = 1;
+        while (a) {
+            System.out.println(b);
+            b++;
 
-        int num = 5;
-        for (int i = 1; i <= 9; i++) {  //5단 출력
-            System.out.println(num + " * " + i + " = " + (num * i));
-        }
-
-        for (int i = 1; i <= 19; i++) {
-            if (i >= 5) {   //5단의 5부터 19까지 실행
-                System.out.println(num + " x " + i + " = " + (num * i));
+            if (b > 10000) {    //조건 만족 시 탈출
+                a = false;
             }
         }
 
-        for (int i = 1; i <= 10; i++) {
-            if (i % 2 == 0) {   //2의 배수 출력
-                System.out.println(i);
-            }
-        }
+        int input = 5;
+        do {
+            System.out.println("자판기입니다");
 
-        for (int i = 20; i >= 1; i--) {
-            if (i % 4 == 0) {   //4의 배수를 20부터 거꾸로 출력
-                System.out.println("i는 " + i);
+            switch (input) {
+                case 1:
+                    System.out.println("콜라");
+                    break;
+                case 2:
+                    System.out.println("사이다");
+                    break;
+                case 3:
+                    System.out.println("물");
+                    break;
+                default:
+                    System.out.println("꽝");
             }
-        }
-
-        //이중 for문
-        for (int i = 1; i <= 9; i++) {
-            System.out.println("구구단 " + i + "단");
-            for (int j = 1; j <= 9; j++) {
-                System.out.println(i + " * " + j + " = " + (i * j));
-            }
-            System.out.println();
-        }
-
+            input = 0;
+        } while (input != 0);
 
     }
 }
