@@ -1,12 +1,25 @@
 //0611 Print-Methods
 
 public class Main_0611 {
-    public static void main(String[] args){
-        System.out.print("프린트 함수랑");
-        System.out.println("프린트 함수 LN 함수의");
-        System.out.print("차이점을 찾아서");
-        System.out.println("디스코드 채팅으로");
-        System.out.print("알려주시면");
-        System.out.println("좋을것 같습니다.");
+    public static void main(String[] args) {
+        String name = "Kim";
+        int num = 10;
+        double pi = 3.14159;
+
+
+        //타입 확인
+        System.out.println((name + num).getClass().getName());
+        System.out.println(((Object) num).getClass().getName());
+
+        System.out.println("\"안녕하세요.\"");
+        System.out.println("이름:\tAlice");
+        System.out.println("\\\\");
+
+        System.out.printf("나이: %d, 원주율: %.2f\n", num, pi);
+
+        int fineDust = 23;
+        double ozone = 0.051;
+        System.out.printf("미세먼지: %d, 오존: %.3f", fineDust, ozone);
+
     }
 }
