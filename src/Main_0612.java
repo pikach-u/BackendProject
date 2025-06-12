@@ -6,9 +6,6 @@ class Animal {
         this.name = name;
     }
 
-    public void printName() {
-        System.out.println("name: " + name);
-    }
 }
 
 class Dog extends Animal {
@@ -19,7 +16,6 @@ class Dog extends Animal {
         this.breed = breed;
     }
 
-    @Override
     public void printName() {
         System.out.println("name: " + name + " breed: " + breed);
     }
@@ -28,6 +24,11 @@ class Dog extends Animal {
 public class Main_0612 {
     public static void main(String[] args) {
         Animal dog = new Dog("쭈", "댕댕이");
-        dog.printName();
+
+        if(dog instanceof Dog) {
+            Dog newDog = (Dog) dog;     //부모 타입을 자식 타입으로 캐스팅 (다운캐스팅)
+
+            newDog.printName();
+        }
     }
 }
