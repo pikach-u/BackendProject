@@ -1,29 +1,26 @@
-//0613 interfaces
+//0613 abstract-classes
 
-interface Animall{
-    void makeSound();
+abstract class Animall{
+    abstract void makeSound();
+
+    public void sleep() {
+        System.out.println("Zzz...");
+    }
 }
 
-class Dogg implements Animall{
+class Dogg extends Animall {
     @Override
-    public void makeSound(){
-        System.out.println("멍멍");;
-    }
-    public void print(){
-        System.out.println("barkkk");
+    void makeSound() {
+        System.out.println("멍멍!");
     }
 }
+
 
 public class Main_0613 {
     public static void main(String[] args) {
         Animall dog = new Dogg();
 
         dog.makeSound();
-
-        if(dog instanceof Dogg) {
-            Dogg newDog = new Dogg();
-
-            newDog.makeLoud();
-        }
+        dog.sleep();
     }
 }
