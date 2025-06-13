@@ -1,21 +1,44 @@
-//0613 getter-setter
+//0613 polymorphism
 
-class ReadOnlyStudent {
-    private final int score;
-
-    public ReadOnlyStudent(int score) {
-        this.score = score;
+class Animall{
+    public void makeSound(){
+        System.out.println();
     }
+}
 
-    public int getScore(){
-        return score;
+class Dogg extends Animall{
+    @Override
+    public void makeSound(){
+        System.out.println("boww");
+    }
+}
+
+class Catt extends Animall{
+    @Override
+    public void makeSound(){
+        System.out.println("meoww");
+    }
+}
+
+class Quokka extends Animall{
+    @Override
+    public void makeSound(){
+        System.out.println("wakk");
     }
 }
 
 public class Main_0613 {
     public static void main(String[] args) {
-        ReadOnlyStudent ros = new ReadOnlyStudent(99);
-        System.out.println(ros.getScore());
+        Animall a1 = new Dogg();
+        Animall a2 = new Catt();
+        Animall a3 = new Quokka();
+
+        Animall[] animalls = {a1,a2,a3};
+
+        for(Animall animall : animalls){
+            animall.makeSound();
+        }
+
 
     }
 }
