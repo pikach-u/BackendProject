@@ -1,44 +1,48 @@
 //0613 polymorphism
 
-class Animall{
-    public void makeSound(){
-        System.out.println();
+abstract class Shape {
+    public abstract double area();
+
+}
+
+class Circle extends Shape {
+
+    private double r;
+
+    public Circle(double r) {
+        this.r = r;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * r * r;
     }
 }
 
-class Dogg extends Animall{
-    @Override
-    public void makeSound(){
-        System.out.println("boww");
-    }
-}
+class Rectangle extends Shape {
 
-class Catt extends Animall{
-    @Override
-    public void makeSound(){
-        System.out.println("meoww");
-    }
-}
+    private double a, b;
 
-class Quokka extends Animall{
+    public Rectangle(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+
     @Override
-    public void makeSound(){
-        System.out.println("wakk");
+    public double area() {
+        return a * b;
     }
 }
 
 public class Main_0613 {
     public static void main(String[] args) {
-        Animall a1 = new Dogg();
-        Animall a2 = new Catt();
-        Animall a3 = new Quokka();
+        Shape[] shapes = new Shape[2];
 
-        Animall[] animalls = {a1,a2,a3};
+        shapes[0] = new Circle(3);
+        shapes[1] = new Rectangle(4, 5);
 
-        for(Animall animall : animalls){
-            animall.makeSound();
+        for (Shape shape : shapes) {
+            System.out.println(shape.area());
         }
-
-
     }
 }
