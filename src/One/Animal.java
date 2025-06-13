@@ -1,9 +1,9 @@
 package One;
 
 public class Animal {
-    public static String publicField = "나는 퍼블릭 하다.";
+    protected static String publicField = "메세지 교체";
 
     public Animal(){
-
+        System.out.println(publicField);
     }
 }

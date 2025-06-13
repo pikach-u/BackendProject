@@ -1,15 +1,36 @@
-//0613 Access-Modifiers
+//0613 getter-setter
 
-public class Main_0613 {
-    public static String publicField = "나는 퍼블릭 하다.";
+class AdultPerson{
+    public String name;
+    public int age;
 
-    public static void main(String[] args) {
-        System.out.println(publicField);
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
+    public void setAge(int age){
+        if(age < 18){
+            System.out.println("Only Adult");
+        } else{
+            this.age = age;
+        }
     }
 }
 
-class Child extends Main_0613 {
-    public Child() {
-        System.out.println(Main_0613.publicField);
+public class Main_0613 {
+    public static void main(String[] args) {
+
+        AdultPerson person = new AdultPerson();
+        person.setName("pikachu");
+
+        System.out.println(person.getName());
     }
 }
