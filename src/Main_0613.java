@@ -1,48 +1,29 @@
-//0613 polymorphism
+//0613 interfaces
 
-abstract class Shape {
-    public abstract double area();
-
+interface Animall{
+    void makeSound();
 }
 
-class Circle extends Shape {
-
-    private double r;
-
-    public Circle(double r) {
-        this.r = r;
-    }
-
+class Dogg implements Animall{
     @Override
-    public double area() {
-        return Math.PI * r * r;
+    public void makeSound(){
+        System.out.println("멍멍");;
     }
-}
-
-class Rectangle extends Shape {
-
-    private double a, b;
-
-    public Rectangle(double a, double b) {
-        this.a = a;
-        this.b = b;
-    }
-
-    @Override
-    public double area() {
-        return a * b;
+    public void print(){
+        System.out.println("barkkk");
     }
 }
 
 public class Main_0613 {
     public static void main(String[] args) {
-        Shape[] shapes = new Shape[2];
+        Animall dog = new Dogg();
 
-        shapes[0] = new Circle(3);
-        shapes[1] = new Rectangle(4, 5);
+        dog.makeSound();
 
-        for (Shape shape : shapes) {
-            System.out.println(shape.area());
+        if(dog instanceof Dogg) {
+            Dogg newDog = new Dogg();
+
+            newDog.makeLoud();
         }
     }
 }
