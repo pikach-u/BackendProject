@@ -1,36 +1,21 @@
 //0613 getter-setter
 
-class AdultPerson{
-    public String name;
-    public int age;
+class ReadOnlyStudent {
+    private final int score;
 
-    public String getName(){
-        return name;
+    public ReadOnlyStudent(int score) {
+        this.score = score;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public int getAge(){
-        return age;
-    }
-
-    public void setAge(int age){
-        if(age < 18){
-            System.out.println("Only Adult");
-        } else{
-            this.age = age;
-        }
+    public int getScore(){
+        return score;
     }
 }
 
 public class Main_0613 {
     public static void main(String[] args) {
+        ReadOnlyStudent ros = new ReadOnlyStudent(99);
+        System.out.println(ros.getScore());
 
-        AdultPerson person = new AdultPerson();
-        person.setName("pikachu");
-
-        System.out.println(person.getName());
     }
 }
