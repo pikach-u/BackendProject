@@ -1,19 +1,32 @@
-//0616 AnonymousClass
+//0616 Calculator
 
-interface Greeting{
-    void greet();
+interface Calculator {
+    int compute(int a, int b);
 }
 
 public class Main_0616 {    //Outter
     public static void main(String[] args) {
-        Greeting greeting = new Greeting() {    //AnonymousClass
+        Calculator mul = new Calculator() {
             @Override
-            public void greet() {
-                System.out.println("Hello from Anonymous Class");
+            public int compute(int a, int b) {
+                return a * b;
             }
         };
+        System.out.println(mul.compute(3, 4));
+        Calculator mulmul = new Calculator() {
+            @Override
+            public int compute(int a, int b) {
+                return (int) Math.pow(a * b, 2);
+            }
+        };
+        System.out.println(mulmul.compute(5, 6));
 
-        greeting.greet();
-
+        Calculator connectNum = new Calculator() {
+            @Override
+            public int compute(int a, int b) {
+                return Integer.parseInt("" + a + b);
+            }
+        };
+        System.out.println(connectNum.compute(3, 4));
     }
 }
