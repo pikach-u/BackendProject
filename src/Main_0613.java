@@ -27,19 +27,37 @@ class CPU {
             switch(opcode){
                 case LOAD:
                     register = memory[operand];
-                    System.out.println("MOV: Loading memory[" + operand + "] (" + memory[0] + ") into register");
+                    System.out.println("LOAD: Loading memory[" + operand + "] (" + memory[operand] + ") into register.");
                     break;
                 case SAVE:
                     memory[operand] = register;
-                    System.out.println("SAVE: Saving memory[" + operand + "] (" + memory[0] + ") from register.");
+                    System.out.println("SAVE: Saving memory[" + operand + "] (" + memory[operand] + ") from register.");
                     break;
+                case ADD:
+                    register += memory[operand];
+                    System.out.println("ADD: Adding memory[" + operand + "] (" + memory[operand] + ") to register. New register value: " + register);
+                    break;
+                case SUB:
+                    register -= memory[operand];
+                    System.out.println("SUB: Subtracting memory[" + operand + "] (" + memory[operand] + ") from register. New register value: " + register);
+                    break;
+                case HALT:
+                    System.out.println("HALT: Stopping program execution.");
+                    break;
+                default:    //예외상황. 실제로는 예외상황이 있으면 안되는게 맞음
+                    System.out.println("Unknown instruction. Halting.");
+                    return;
             }
+
+            pc++;
         }
     }
 }
 
 public class Main_0613 {
     public static void main(String[] args) {
-
+        CPU cpu = new CPU();
+        cpu.executeProgram();
+        System.out.println("Final memory state: memory[2] = " + cpu.memory[2]);
     }
 }
