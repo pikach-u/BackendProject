@@ -1,17 +1,21 @@
 //0616 inner class
 
-public class Main_0616 {
+class Outer {
 
     String outerMessage = "Hello from Outer";
 
-    class Inner{
-        void showMessage(){
+    private class Inner {   //오류!
+        void showMessage() {
             System.out.println(outerMessage);
         }
     }
+}
+
+public class Main_0616 {
+
     public static void main(String[] args) {
-        Main_0616 main = new Main_0616();
-        Main_0616.Inner inner = main.new Inner();   //오..
+        Outer outer = new Outer();
+        Outer.Inner inner = outer.new Inner();   //private은 접근x!!
 
         inner.showMessage();
 
