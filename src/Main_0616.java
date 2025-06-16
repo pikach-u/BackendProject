@@ -1,22 +1,29 @@
 //0616 inner class
 
-public class Main_0616 {    //Outer
+class Car {
+    String brand;
 
-    private String mess = "Hello from the outer class.";
+    public Car(String brand) {
+        this.brand = brand;
+    }
 
-    class InnerClass{
-        void displayMessage(){
-            System.out.println("Inner say: " + mess);
+    class Engine {
+        public void start() {
+            System.out.println("The engine of " + brand + " is starting.");
         }
     }
 
-    public void callInner(){
-        InnerClass inner = new InnerClass();
-        inner.displayMessage();
+    public void startEngine() {
+        Engine engien = new Engine();
+        engien.start();
     }
+}
 
-    public static void main(String[] args){
-        Main_0616 outer = new Main_0616();
-        outer.callInner();
+public class Main_0616 {
+    public static void main(String[] args) {
+
+        Car car = new Car("빠른자동차");
+
+        car.startEngine();
     }
 }
