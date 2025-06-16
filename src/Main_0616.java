@@ -1,29 +1,22 @@
-class Personn{
+//0616 inner class
 
-    int a = 0;
-    static int b = 1;
+public class Main_0616 {    //Outer
 
-    public static void greet(){
-        System.out.println("Hello from static Method");
+    private String mess = "Hello from the outer class.";
+
+    class InnerClass{
+        void displayMessage(){
+            System.out.println("Inner say: " + mess);
+        }
     }
 
-    public void sayHello(){
-        System.out.println("Hello from instance Method.");
+    public void callInner(){
+        InnerClass inner = new InnerClass();
+        inner.displayMessage();
     }
-}
 
-class Utils {
-    public static void sayHi() {
-        System.out.println("Hi!");
-    }
-}
-
-public class Main_0616 {
     public static void main(String[] args){
-        Personn.greet();    // 인스턴스 없이 호출 가능
-
-        Personn p = new Personn();
-        p.sayHello();
-        p.greet();
+        Main_0616 outer = new Main_0616();
+        outer.callInner();
     }
 }
