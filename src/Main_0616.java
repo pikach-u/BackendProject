@@ -1,31 +1,17 @@
-//0616 NullPointerException
+//0616 OuterInMemory
 
-public class Main_0616 {    //Outter
-    private String data = "Outer data";
-
-    class Inner {
-        void printData() {
-            System.out.println(data);
+class Outer {
+    static class StaticInner {
+        void hello() {
+            System.out.println("hi");
         }
     }
+}
 
-    public Inner createInner() {
-        return new Inner();
-    }
 
+public class Main_0616 {    //Outter
     public static void main(String[] args) {
-        Main_0616 outer = new Main_0616();
-        //Outer.this
-        Main_0616.Inner inner = outer.createInner();
-
-        inner.printData();
-
-        outer = null;
-
-        inner.printData();
-
-        inner = null;
-
-        System.gc();
+        Outer.StaticInner inner = new Outer.StaticInner();   //static을 이용해서 사용하기
+        inner.hello();
     }
 }
