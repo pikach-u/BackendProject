@@ -1,17 +1,19 @@
-//0616 OuterInMemory
+//0616 AnonymousClass
 
-class Outer {
-    static class StaticInner {
-        void hello() {
-            System.out.println("hi");
-        }
-    }
+interface Greeting{
+    void greet();
 }
-
 
 public class Main_0616 {    //Outter
     public static void main(String[] args) {
-        Outer.StaticInner inner = new Outer.StaticInner();   //static을 이용해서 사용하기
-        inner.hello();
+        Greeting greeting = new Greeting() {    //AnonymousClass
+            @Override
+            public void greet() {
+                System.out.println("Hello from Anonymous Class");
+            }
+        };
+
+        greeting.greet();
+
     }
 }
