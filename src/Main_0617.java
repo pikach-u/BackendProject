@@ -1,16 +1,17 @@
-//0617 Lambda function
+//0617 Method reference
 
-@FunctionalInterface
-interface MathOperation {
-    int operate(int a, int b);
-}
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 
 public class Main_0617 {
     public static void main(String[] args) {
-        MathOperation add = (a, b) -> a + b;
-        MathOperation multiply = (a, b) -> a * b;
+        String[] name = {"홍성현", "김백기", "강윤정", "고종우"};
+        for(String n : name){
+            System.out.println(n);
+        }
+        Arrays.stream(name).forEach(nn -> System.out.println(nn));
+        Arrays.stream(name).forEach(System.out::println);
 
-        System.out.println(add.operate(2,4));
-        System.out.println(multiply.operate(3,5));
     }
 }
