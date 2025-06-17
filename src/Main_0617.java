@@ -1,18 +1,12 @@
-//0617 throws
+//0617 split
 
 public class Main_0617 {
     public static void main(String[] args) {
-        String strNum = "123a";
+        String input = "1 0 0";
+        String[] tokens = input.split(" ");
 
-        try {
-            int num = convertToInt(strNum);
-            System.out.println("result: " + num);
-        } catch (NumberFormatException e) {
-            System.out.println("Format Error!");
+        for(String token: tokens){
+            System.out.println(token);
         }
-    }
-
-    public static int convertToInt(String s) throws NumberFormatException {
-        return Integer.parseInt(s);
     }
 }
