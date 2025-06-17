@@ -2,17 +2,16 @@
 
 public class Main_0617 {
     public static void main(String[] args) {
-        int a = 10;
-        int b = 0;
+        String input = "123a";
 
         try {
-            int result = a / b;
-            System.out.println("Result: " + result);
-        } catch (ArithmeticException e) {
-            System.out.println("Error");
+            int number = Integer.parseInt(input);
+            System.out.println("Parse Number: " + number);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Unable to parse the input");
 
         } finally {   //항상 실행
-            System.out.println("Clean Up");
+            System.out.println("Process completed.");
         }
     }
 }
