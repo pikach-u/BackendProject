@@ -1,14 +1,18 @@
-//0617 Parse
+//0617 throws
 
 public class Main_0617 {
     public static void main(String[] args) {
-        String input = "123a";
+        String strNum = "123a";
 
         try {
-            int number = Integer.parseInt(input);
-            System.out.println(number);
+            int num = convertToInt(strNum);
+            System.out.println("result: " + num);
         } catch (NumberFormatException e) {
-            System.out.println("숫자 포맷이 아닙니다.");
+            System.out.println("Format Error!");
         }
+    }
+
+    public static int convertToInt(String s) throws NumberFormatException {
+        return Integer.parseInt(s);
     }
 }
