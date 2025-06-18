@@ -1,17 +1,14 @@
-//0617 finally
+//0617 interupt
 
 public class Main_0617 {
-    public static void main(String[] args) {
-        String input = "123a";
-
+    public static void main(String[] args) throws InterruptedException {
+        Thread worker = new Thread(() -> {});
         try {
-            int number = Integer.parseInt(input);
-            System.out.println("Parse Number: " + number);
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Unable to parse the input");
-
-        } finally {   //항상 실행
-            System.out.println("Process completed.");
+            System.out.println("Working..");
+            Thread.sleep(10_000);
+            System.out.println("Completed.");
+        }catch (InterruptedException e){
+            System.out.println("정리 후 종료");
         }
     }
 }
