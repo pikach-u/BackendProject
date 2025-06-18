@@ -5,7 +5,7 @@ import java.util.*;
 public class Main_0618 {
     public static void main(String[] args) {
 
-        Set<String> fruits = new LinkedHashSet<>();
+        Set<String> fruits = new TreeSet<>();
 
         fruits.add("Apple");
         fruits.add("Banana");
