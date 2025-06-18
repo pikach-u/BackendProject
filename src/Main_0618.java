@@ -1,27 +1,36 @@
-//0618 List
+//0618 Set
 
 import java.util.*;
 
 public class Main_0618 {
     public static void main(String[] args) {
 
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        int sum = 0;
-        for (int num : numbers) {
-            sum += num;
-        }
-        System.out.println(sum);
+        List<String> listFruits = new ArrayList<>();
+        Set<String> fruits = new HashSet<>();
 
-        List<String> fruits = new ArrayList<>();
+        listFruits.add("Apple");
+        listFruits.add("Apple");    //중복 가능
+        listFruits.add("Pear");
+
+        for (String listFruit : listFruits)
+            System.out.println(listFruit);
+
+
         fruits.add("Apple");
         fruits.add("Banana");
+        fruits.add("Apple");    //중복 X
+        fruits.add("banana");
+        fruits.add("apple");    //대소문자 구분
+        fruits.add("Kiwi");
+        fruits.add("kiwi");
 
-        if (fruits.size() > 0) {
-            System.out.println("리스트에 항목이 있습니다.");
-        }
+//        Iterator<String> it = fruits.iterator();
+//        while(it.hasNext()) {
+//            String item = it.next();
+//            System.out.println(item);
+//        }     //아래 코드와 같은 동작
 
+        for (String fruit : fruits) //출력 순서가 O
+            System.out.println(fruit);
     }
 }
