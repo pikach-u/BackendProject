@@ -12,7 +12,12 @@ public class Main_0618 {
         fruits.add("Dragonfruit");
         fruits.add("Mango");
 
-        Collections.sort(fruits);
+        if(fruits.contains("Kiwi")){
+            System.out.println("Kiwi is contained");
+        }
+        else{
+            System.out.println("Kiwi is not contained");
+        }
 
         for(String fruit : fruits)
             System.out.println(fruit);
