@@ -1,25 +1,35 @@
-//0619 Map
+//0619 Generic
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+class Box<T> {
+    private T content;
+
+    public Box(T content) {
+        this.content = content;
+    }
+
+    public T getContent() {
+        return content;
+    }
+
+    public void setContent(T content) {
+        this.content = content;
+    }
+
+    public <E> void printContent(E extraInfo) {
+        System.out.println("Content: " + content + ", Extra: " + extraInfo);
+    }
+}
 
 public class Main_0619 {
     public static void main(String[] args) {
-        Map<String, Integer> fruitPrices = new TreeMap<>();
+        Box<String> stringBox = new Box<String>("나는 훌륭한 박스가 될거야");
 
-        fruitPrices.put("사과", 17980);
-        fruitPrices.put("배", 10320);
-        fruitPrices.put("수박", 15920);
-        fruitPrices.put("멜론", 10630);
+        System.out.println(stringBox.getContent());
 
-        System.out.println(fruitPrices.containsKey("사과"));
-        System.out.println(fruitPrices.containsValue(9999));
-        System.out.println(fruitPrices.getOrDefault("멜론", 3000));
-        System.out.println(fruitPrices.getOrDefault("포도", 5000));
+        stringBox.setContent("실패");
 
-        for (Map.Entry<String, Integer> entry : fruitPrices.entrySet()) {
-            System.out.println(entry.getKey() + entry.getValue());
-        }
+        System.out.println(stringBox.getContent());
+
+        stringBox.printContent(1234);
     }
 }
