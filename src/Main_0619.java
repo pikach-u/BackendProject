@@ -1,16 +1,23 @@
 //0619 Generic
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main_0619 {
+
+    public static void printElements(List<?> list) {
+        for (Object o : list) {
+            System.out.println(o);
+        }
+    }
+
     public static void main(String[] args) {
-//        Object[] arr = new Integer[3];
-//        arr[1] = "Hello";   //ArrayStoreException
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        List<String> words = Arrays.asList("A", "B", "C");
 
-//        List<Object> arr = new ArrayList<Integer>();    // X, 제네릭은 불공변
-        List<? extends Number> arr = new ArrayList<Integer>();  //Wild Card를 통해 공변성 부여
-
-
+        printElements(numbers);
+        printElements(words);
     }
 }
