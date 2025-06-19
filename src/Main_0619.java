@@ -1,35 +1,20 @@
 //0619 Generic
 
-class Box<T> {
-    private T content;
-
-    public Box(T content) {
-        this.content = content;
+class Box {
+    public static <T> void displayArray(T[] array) {
+        for (T element : array) {
+            System.out.println(element);
+        }
     }
 
-    public T getContent() {
-        return content;
-    }
-
-    public void setContent(T content) {
-        this.content = content;
-    }
-
-    public <E> void printContent(E extraInfo) {
-        System.out.println("Content: " + content + ", Extra: " + extraInfo);
-    }
 }
 
 public class Main_0619 {
     public static void main(String[] args) {
-        Box<String> stringBox = new Box<String>("나는 훌륭한 박스가 될거야");
+        Integer[] numbers = {1, 2, 3, 4, 5};
+        String[] words = {"apple", "banana", "cherry"};
 
-        System.out.println(stringBox.getContent());
-
-        stringBox.setContent("실패");
-
-        System.out.println(stringBox.getContent());
-
-        stringBox.printContent(1234);
+        Box.displayArray(numbers);
+        Box.displayArray(words);
     }
 }
