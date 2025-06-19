@@ -1,35 +1,16 @@
-//0619 Generic
+//0619 Stream
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main_0619 {
-
-    public static double sumList(List<? extends Number> list) {
-        double sum = 0;
-
-        for (Number n : list) {
-            sum += n.doubleValue();
-
-        }
-        for (Number n : list) {
-            sum += n.doubleValue();
-
-            if (n instanceof Integer) {
-                Integer.toHexString((Integer) n);
-            } else if (n instanceof Double) {
-
-            }
-        }
-        return sum;
-    }
-
     public static void main(String[] args) {
-        List<Integer> intList = Arrays.asList(10, 20, 30);
-//        List<Double> doubleList = Arrays.asList(0.1, 0.2);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+//        Stream<Integer> stream = numbers.stream();
+        numbers.stream().filter((n) -> n % 2 == 0); //2, 4
 
-        System.out.println("합계: " + sumList(intList));
     }
 }
