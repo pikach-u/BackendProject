@@ -1,6 +1,7 @@
 //0619 Generic
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Box {
@@ -18,12 +19,16 @@ public class Main_0619 {
 //        String[] words = {"apple", "banana", "cherry"};
 //        Box.displayArray(numbers);
 
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);     //Immutable Object
         Box.displayArray(numbers);
+
+//        numbers.add(6);     //X
+//        numbers.remove(3);  //X
+//        Box.displayArray(numbers);
+
+        List<Integer> number = new ArrayList<>(List.of(1, 2, 3, 4, 5));     //mutable Object
+        number.add(6);
+        Box.displayArray(number);
 
 
 //        String[] words = {"apple", "banana", "cherry"};
@@ -31,7 +36,11 @@ public class Main_0619 {
         words.add("apple");
         words.add("banana");
         words.add("cherry");
+
+        List<String> word = new ArrayList<>(Arrays.asList("apple", "banana", "cherry"));
+
         Box.displayArray(words);
+        Box.displayArray(word);
 
     }
 }
