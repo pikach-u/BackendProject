@@ -1,40 +1,46 @@
 //0620 Thread
 
-import java.util.Timer;
+class SumRunnable implements Runnable {
+    private final int[] numbers;
 
-class MyRunnable implements Runnable {
+    public SumRunnable(int[] numbers) {
+        this.numbers = numbers;
+    }
+
     @Override
     public void run() {
-        System.out.println("Runnable 실행중");
+        int sum = 0;
 
-        for (int i = 0; i < 5; i++) {
+        for (int n : numbers) {
+            sum += n;
+
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Thread interrupted.");
             }
         }
+
+        System.out.println(Thread.currentThread().getName() + " - Sum: " + sum);
     }
 }
 
 public class Main_0620 {
     public static void main(String[] args) {
-//        Thread thread = new Thread(new MyRunnable(), "CountThread");
-////        thread.setName("CountThread");
-//        thread.start();
+        int[][] dataSets = {
+                {1, 2, 3, 4, 5},
+                {10, 20, 30},
+                {7, 14, 21, 28},
+                {100, 200, 300, 400}
+        };
 
-        new Thread(() -> {      //람다로 변경
-            System.out.println("Runnable 실행 중");
+        for (int i = 0; i < dataSets.length; i++) { // 반복문을 통해 Thread 생성
+            Thread sumThread = new Thread(new SumRunnable(dataSets[i]));
 
-            for (int i = 1; i <= 5; i++) {
-                try {
-                    Thread.sleep(5000);
+            sumThread.start();
+        }
 
-                    System.out.println(i);
-                } catch (InterruptedException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-        }).start();
+        System.out.println("All threads started.");
+
     }
 }
