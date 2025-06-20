@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Main_0620 {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Double> values = Arrays.asList(10.0, 20.0, 30.0);
 
-        int result = numbers.stream()
-                .filter((n) -> n % 2 == 0)
-                .mapToInt(Integer::intValue)
-                .sum();
+        double avg = values.stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);   //안전장치
 
-        System.out.println(result);
+        System.out.println(avg);
 
     }
 }
