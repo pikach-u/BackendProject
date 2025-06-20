@@ -2,14 +2,15 @@
 
 import java.util.Timer;
 
-class MyThread extends Thread {      //Thread 상속
+class MyRunnable implements Runnable {
     @Override
     public void run() {
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("My Thread: " + i);
+        System.out.println("Runnable 실행중");
+
+        for (int i = 0; i < 5; i++) {
             try {
-                Thread.sleep(5000);     // 예외처리 필수
-            } catch (InterruptedException e) {  //.sleep()이 실행되는 동안 외부에서 작업이 들어올 수 있음
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -18,9 +19,22 @@ class MyThread extends Thread {      //Thread 상속
 
 public class Main_0620 {
     public static void main(String[] args) {
-        MyThread thread = new MyThread();
-        thread.start();
+//        Thread thread = new Thread(new MyRunnable(), "CountThread");
+////        thread.setName("CountThread");
+//        thread.start();
 
-        thread.run();   // run을 직접 호출하면 멀티스레딩 X
+        new Thread(() -> {      //람다로 변경
+            System.out.println("Runnable 실행 중");
+
+            for (int i = 1; i <= 5; i++) {
+                try {
+                    Thread.sleep(5000);
+
+                    System.out.println(i);
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }).start();
     }
 }
