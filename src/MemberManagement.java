@@ -3,9 +3,9 @@ import java.util.List;
 import java.util.Scanner;
 
 class Member {
-    private String name;
-    private int age;
-    private String phoneNum;
+    private final String name;
+    private final int age;
+    private final String phoneNum;
     private int memberNum;
 
     public Member(String name, int age, String phoneNum) {
@@ -41,7 +41,7 @@ class Member {
 
 class registerManager {
 
-    private List<Member> memberList = new ArrayList<>();
+    private final List<Member> memberList = new ArrayList<>();
 
     public void RegisterMember(Scanner scanner) {
         //예외처리 필요
@@ -76,7 +76,7 @@ class registerManager {
     }
 }
 
-public class Main_Mission1 {
+public class MemberManagement {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         registerManager manager = new registerManager();
