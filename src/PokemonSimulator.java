@@ -50,22 +50,31 @@ class PokemonManager {
 //    }
 
     public void registerPokemon(Scanner scanner) {  //포켓몬 등록
-        System.out.println("이름: ");
-        String name = scanner.nextLine();
+        System.out.println("이름: ");     //!!중복을 체크할지?
+        String name = scanner.nextLine();   //공백 등 이상한 이름 처리
 
-        System.out.println("타입: ");
+        System.out.println("타입: ");     //!!타입 오타방지를 위해 Enum으로 관리
         String type = scanner.nextLine();
 
         System.out.println("체력(hp): ");
-        int hp = scanner.nextInt();
+        int hp = scanner.nextInt();     //!!문자열 입력시 터짐
+                                        //!!음수 입력 처리
 
         System.out.println("공격력: ");
         int atk = scanner.nextInt();
         scanner.nextLine();     //buffer 제거
 
-        pokemonList.add(new Pokemon(name, type, hp, atk));
+        pokemonList.add(new Pokemon(name, type, hp, atk));      //Map으로 관리: 검색 성능 up, 중복 방지 가능
         System.out.println(name + " 등록 완료!");
 
+    }
+
+    public void removePokemon(Scanner scanner){
+        // !!Collection에 저장된 포켓몬 제거
+    }
+
+    public void typeCalculate(){
+        //상성 계산
     }
 
     public void printAll() {        //List에 저장된 포켓몬을 저장된 순서대로 출력
@@ -95,7 +104,7 @@ class PokemonManager {
         int hp1 = p1.getHp();
         int hp2 = p2.getHp();
 
-        while (hp1 > 0 && hp2 > 0) {
+        while (hp1 > 0 && hp2 > 0) {        //!!Critical 난수 추가
             hp2 -= p1.getAttack();
             System.out.printf("%s 공격 → %s 체력: %d\n", p1.getName(), p2.getName(), Math.max(hp2, 0));
             if (hp2 <= 0) break;
@@ -138,7 +147,7 @@ public class PokemonSimulator {
             int input = sc.nextInt();
             sc.nextLine();     //nextInt() 뒤에는 buffer 비워줘야 함
 
-            switch (input) {
+            switch (input) {     //메서드로 분리
                 case 1:
                     manager.registerPokemon(sc);
                     break;
