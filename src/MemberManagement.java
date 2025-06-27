@@ -15,7 +15,7 @@ class Member {
     @Override
     public String toString() {   //객체를 출력하기 위해 toString() 메서드 오버라이딩
 
-        return String.format("[%s] 이름: %s\t나이: %d\t전화번호: %s",
+        return String.format("[%s] 이름: %s   나이: %d   전화번호: %s",
                 this.getClass().getSimpleName(), name, age, phoneNum);
         //010-xxxx-xxxx
     }
@@ -25,76 +25,133 @@ class Member {
         return name;
     }
 
-    public int getAge() { return age; }
+    public int getAge() {
+        return age;
+    }
 
-    public String getPhoneNum() { return phoneNum; }
+    public String getPhoneNum() {
+        return phoneNum;
+    }
 
 }
 
 class ManagementSystem {
 
-//    private final List<Member> memberList = new ArrayList<>();
-    private final Map<String, Member> memberList = new HashMap<>();
+    //    private final List<Member> memberList = new ArrayList<>();
+    private final List<Member> memberList = new ArrayList<>();
+
     public void RegisterMember(Scanner scanner) {
         //예외처리 필요
-        System.out.println("이름: "); //중복 가능
-        String name = scanner.nextLine();
+        while(true) {
+            System.out.println("이름: "); //중복 가능
+            String name = scanner.nextLine();
 
-        System.out.println("나이: ");
-        int age = scanner.nextInt();
-        scanner.nextLine();     //buffer 제거
+            int age = 0;
+            try {
+                System.out.println("나이: ");
+                age = scanner.nextInt();    //예외처리 필요
+                scanner.nextLine();     //buffer 제거
 
-        System.out.println("전화번호: ");
-        String phoneNum = scanner.nextLine();
+            } catch (NumberFormatException e) {
+                System.out.println("숫자로 입력해주세요.");
+                throw new RuntimeException(e);
+            }
 
-        String id = null;
+            System.out.println("전화번호: ");
+            String phoneNum = scanner.nextLine();
 
-        do {
-             id = UUID.randomUUID().toString().substring(0, 6);
-        } while(memberList.containsKey(id));
-
-        memberList.put(id, new Member(name, age, phoneNum));
-        System.out.println(name + "님 등록이 완료되었습니다.");
+            //Map 변경 시 추가 예정
+//            String id = null;
+//
+//            do {
+//                id = UUID.randomUUID().toString().substring(0, 6);
+//            } while (memberList.containsKey(id));
+//
+//            memberList.put(id, new Member(name, age, phoneNum));
+            memberList.add(new Member(name, age, phoneNum));
+            System.out.println(name + "님 등록이 완료되었습니다.");
+            System.out.println("계속 등록하시겠습니까?");
+            System.out.println("1.예  / 2.아니오");
+            int input = scanner.nextInt();
+            scanner.nextLine();
+            if(input == 1) {
+                continue;
+            } else if (input == 2) break;
+        }
 
     }
 
-    public void removeMember(Scanner scanner) {
+    public void removeMember (String deleteMember){
         //List 안의 멤버 삭제
+        memberList.removeIf(member -> member.getName().equals(deleteMember));
+
+        System.out.println(deleteMember +"님의 정보가 삭제되었습니다.");
     }
 
-    public void printMembers() {
+    public void printMembers () {
 
         if (memberList.isEmpty()) {
             System.out.println("회원 목록이 비어있습니다.");
             return;
         }
-        for (Member member : memberList.values()) {
-            System.out.println(member);
-        }
 
         //회원목록을 정렬 - 현재는 List 정렬. Map 정렬로 재구현 필요
 //        memberList.sort((m1, m2) -> m1.getName().compareTo(m2.getName()));
-        List<Member> sortList = new ArrayList<>(memberList.values());
-        sortList.sort(Comparator.comparing(Member::getName));
-
-//        for (Member member : sortList) {      // value만 출력
-//            System.out.println(member);
-//        }
-
-        for (Map.Entry<String, Member> entry : memberList.entrySet()) {
-            System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
+        memberList.sort(Comparator.comparing(Member::getName));
+        for (Member member : memberList) {      // value만 출력
+            System.out.println(member);
         }
 
-    }
-}
+//            for (Map.Entry<String, Member> entry : memberList.entrySet()) {
+//                System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
+//            }
 
-public class MemberManagement {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        ManagementSystem manager = new ManagementSystem();
-
-        manager.RegisterMember(sc);
-        manager.RegisterMember(sc);
-        manager.printMembers();
     }
-}
+
+    }
+
+    public class MemberManagement {
+
+        public static void printMenu(){
+            System.out.println("----------< 회원 등록 프로그램 >----------");
+            System.out.println("--------원하는 메뉴를 선택해주세요---------");
+            System.out.println("1. 신규 회원 등록");
+            System.out.println("2. 회원 목록 모두 보기");
+            System.out.println("3. 회원 삭제");
+            System.out.println("0. 프로그램 종료");
+
+        }
+
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            ManagementSystem manager = new ManagementSystem();
+            String deleteMember = null;
+
+            while (true) {
+                printMenu();
+
+                int input = sc.nextInt();
+                sc.nextLine();
+
+                switch (input) {
+                    case 1:
+                        manager.RegisterMember(sc);
+                        break;
+                    case 2:
+                        manager.printMembers();
+                        break;
+                    case 3:
+                        System.out.println("삭제할 회원명을 입력해주세요.");
+                        deleteMember = sc.nextLine();
+                        manager.removeMember(deleteMember);
+                        break;
+                    case 0:
+                        System.out.println("프로그램을 종료합니다.");
+                        sc.close();
+                        return;
+                    default:
+                        System.out.println("다시 입력해주세요.");
+                }
+            }
+        }
+    }
